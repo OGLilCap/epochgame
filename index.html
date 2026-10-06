@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On This Day in History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(rgba(245, 240, 225, 0.92), rgba(245, 240, 225, 0.75)),
+                        url('https://images.pexels.com/photos/247671/pexels-photo-247671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') center/cover no-repeat fixed;
+            background-blend-mode: overlay;
+            color: #3c2f2f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #fact-container {
+            max-width: 720px;
+            width: 100%;
+            background: #f9f5e8;
+            padding: 50px 60px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(60, 47, 47, 0.15),
+                        inset 0 0 40px rgba(139, 69, 19, 0.08);
+            position: relative;
+            border: 1px solid rgba(139, 69, 19, 0.15);
+            box-sizing: border-box;
+        }
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: #8b4513;
+            margin: 0 0 0.5rem;
+            text-align: center;
+        }
+        #date-header {
+            font-size: 1.6rem;
+            color: #5c4033;
+            text-align: center;
+            margin: 0 0 1.8rem;
+            font-style: italic;
+        }
+        #fact {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            margin: 1.5rem 0 2rem;
+            color: #2f1f0f;
+            min-height: 3rem;
+        }
+        #tag-row {
+            text-align: center;
+            margin: -1rem 0 1.5rem;
+            font-size: 0.95rem;
+        }
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            margin: 0 4px;
+            border-radius: 999px;
+            background: rgba(139, 69, 19, 0.1);
+            color: #6b4423;
+            font-style: italic;
+        }
+        #controls {
+            text-align: center;
+            margin: 1.5rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 0.95rem;
+        }
+        .filter-group label {
+            margin-bottom: 3px;
+            color: #5c4033;
+        }
+        select {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            padding: 8px 14px;
+            border: 1px solid #8b4513;
+            border-radius: 6px;
+            background: #fffef0;
+            color: #3c2f2f;
+        }
+        #next-btn {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            padding: 9px 22px;
+            border: 1px solid #8b4513;
+            border-radius: 6px;
+            background: #8b4513;
+            color: #fffef0;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        #next-btn:hover {
+            background: #6b3410;
+        }
+        #result-count {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #8a7a63;
+            margin-bottom: 1rem;
+        }
+        #epoch-link {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 1rem;
+        }
+        #epoch-link a {
+            color: #0066cc;
+            text-decoration: underline;
+        }
+        #epoch-link a:hover {
+            color: #004499;
+        }
+        #loading {
+            font-size: 1.3rem;
+            color: #6b5e4e;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        footer {
+            font-size: 1rem;
+            color: #6b5e4e;
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(139, 69, 19, 0.15);
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="fact-container">
+        <h1>On This Day in History</h1>
+        <div id="date-header"></div>
+
+        <div id="tag-row"></div>
+        <p id="fact"></p>
+        <div id="result-count"></div>
+
+        <div id="controls">
+            <div class="filter-group">
+                <label for="Category">Category</label>
+                <select id="Category">
+                    <option value="Events">Events</option>
+                    <option value="Births">Births</option>
+                    <option value="Deaths">Deaths</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="Century">Century</label>
+                <select id="Century">
+                    <option value="all">All Centuries</option>
+                    <option value="ancient">Before 1700</option>
+                    <option value="1700">1700s</option>
+                    <option value="1800">1800s</option>
+                    <option value="1900">1900s</option>
+                    <option value="2000">2000s+</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="Region">Region</label>
+                <select id="Region">
+                    <option value="all">All Regions</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Middle East">Middle East</option>
+                    <option value="North America">North America</option>
+                    <option value="Oceania">Oceania</option>
+                    <option value="South America">South America</option>
+                </select>
+            </div>
+
+            <button id="next-btn">Next Fact</button>
+        </div>
+
+        <div id="epoch-link">
+            <a href="https://www.epoch-us.com" target="_blank">Epoch</a>
+        </div>
+
+        <div id="loading">Loading today's history...</div>
+
+        <footer>
+            <p>Tap your Epoch bracelet again for a new fact!<br>
+            Come back tomorrow for fresh moments from this day in history.</p>
+            <small>
+                Historical facts sourced from <a href="https://history.muffinlabs.com/">Muffin Labs</a> (CC BY-SA 3.0).
+                Region tagging is inferred from place names mentioned in each entry and may occasionally be imprecise or unavailable.
+                © 2026 Epoch. All original content reserved.
+            </small>
+        </footer>
+    </div>
+
+    <script>
+        // Surface any script error directly on the page — helpful for
+        // debugging on a phone (via NFC tap) where dev tools aren't available.
+        window.addEventListener('error', (e) => {
+            const factEl = document.getElementById('fact');
+            const loadingEl = document.getElementById('loading');
+            if (loadingEl) loadingEl.style.display = 'none';
+            if (factEl) factEl.innerHTML = `<strong>Something went wrong loading this page.</strong><br><small>${e.message}</small>`;
+        });
+
+        const now = new Date();
+        const month = now.getMonth() + 1;
+        const day = now.getDate();
+        const monthName = now.toLocaleString('default', { month: 'long' });
+        const todayKey = now.toISOString().slice(0, 10); // e.g. "2026-08-03"
+
+        document.getElementById('date-header').textContent = `On this day, ${monthName} ${day}...`;
+
+        // --- Filter persistence -----------------------------------------
+        // We store ONE small object under ONE key, and overwrite it every
+        // time a filter changes. Because it's tagged with today's date,
+        // it's treated as stale (and ignored) as soon as the date rolls
+        // over — so filters "reset" every night without ever growing.
+        const STORAGE_KEY = 'epochFilters';
+
+        function loadSavedFilters() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+                const saved = JSON.parse(raw);
+                if (saved.date !== todayKey) return null; // stale, ignore
+                return saved;
+            } catch (err) {
+                return null; // localStorage unavailable or corrupt — just use defaults
+            }
+        }
+
+        function saveFilters() {
+            try {
+                const { category, century, region } = currentSelections();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify({ date: todayKey, category, century, region }));
+            } catch (err) {
+                // Storage unavailable (private browsing, quota, etc.) — fail silently,
+                // the page still works, it just won't remember the filter.
+            }
+        }
+
+        // --- Data by category, fetched once ---
+        let dataByCategory = { Events: [], Births: [], Deaths: [] };
+        let lastShown = [];
+
+        // --- Region keyword map -----------------------------------------
+        // Muffin Labs / Wikipedia "on this day" entries have no region field,
+        // so we infer region from country/place names mentioned in the text.
+        // This is best-effort: an entry can match multiple regions, or none.
+        const REGION_KEYWORDS = {
+            "Africa": ["Egypt","Nigeria","Kenya","Ethiopia","South Africa","Morocco","Algeria","Tunisia","Libya","Sudan","Ghana","Uganda","Zimbabwe","Zambia","Angola","Mozambique","Senegal","Congo","Cameroon","Rwanda","Somalia","Tanzania","Ivory Coast","Mali","Namibia","Botswana"],
+            "Asia": ["China","Japan","India","Korea","Vietnam","Thailand","Indonesia","Philippines","Malaysia","Singapore","Pakistan","Bangladesh","Mongolia","Taiwan","Cambodia","Myanmar","Nepal","Sri Lanka","Kazakhstan","Uzbekistan","Hong Kong"],
+            "Europe": ["England","Britain","United Kingdom","France","Germany","Italy","Spain","Portugal","Russia","Poland","Netherlands","Belgium","Sweden","Norway","Denmark","Finland","Austria","Switzerland","Greece","Ireland","Scotland","Wales","Hungary","Romania","Ukraine","Czech","Serbia","Croatia","Bulgaria"],
+            "Middle East": ["Israel","Palestine","Iran","Iraq","Saudi Arabia","Syria","Lebanon","Jordan","Turkey","Yemen","Kuwait","Qatar","United Arab Emirates","Oman","Ottoman"],
+            "North America": ["United States","America","Canada","Mexico","Cuba","Jamaica","Haiti","Guatemala","Honduras","Panama","Costa Rica"],
+            "Oceania": ["Australia","New Zealand","Fiji","Papua New Guinea","Samoa","Tonga"],
+            "South America": ["Brazil","Argentina","Chile","Peru","Colombia","Venezuela","Ecuador","Bolivia","Uruguay","Paraguay"]
+        };
+
+        function detectRegions(text) {
+            const matches = [];
+            for (const [region, keywords] of Object.entries(REGION_KEYWORDS)) {
+                for (const kw of keywords) {
+                    const re = new RegExp(`\\b${kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+                    if (re.test(text)) {
+                        matches.push(region);
+                        break;
+                    }
+                }
+            }
+            return matches;
+        }
+
+        function getDecade(yearStr) {
+            const year = parseInt(String(yearStr).replace(/\D/g, ''), 10);
+            if (isNaN(year) || year < 1700) return 'ancient';
+            return (Math.floor(year / 100) * 100).toString();
+        }
+
+        function passesFilters(entry, century, region) {
+            if (century !== 'all') {
+                if (century === 'ancient') {
+                    const y = parseInt(String(entry.year).replace(/\D/g, ''), 10);
+                    if (isNaN(y) || y >= 1700) return false;
+                } else if (getDecade(entry.year) !== century) {
+                    return false;
+                }
+            }
+            if (region !== 'all') {
+                if (!entry._regions.includes(region)) return false;
+            }
+            return true;
+        }
+
+        function currentSelections() {
+            return {
+                category: document.getElementById('Category').value,
+                century: document.getElementById('Century').value,
+                region: document.getElementById('Region').value
+            };
+        }
+
+        function displayFact() {
+            const factEl = document.getElementById('fact');
+            const tagRow = document.getElementById('tag-row');
+            const countEl = document.getElementById('result-count');
+            const { category, century, region } = currentSelections();
+
+            const pool = dataByCategory[category] || [];
+            const filtered = pool.filter(e => passesFilters(e, century, region));
+            const source = filtered.length ? filtered : pool;
+
+            countEl.textContent = filtered.length
+                ? `${filtered.length} match${filtered.length === 1 ? '' : 'es'} for today`
+                : (pool.length ? 'No matches for these filters today — showing all for this category instead' : '');
+
+            if (source.length === 0) {
+                factEl.textContent = "No historical entries available for today.";
+                tagRow.innerHTML = '';
+                return;
+            }
+
+            const entry = source[Math.floor(Math.random() * source.length)];
+            lastShown = source;
+
+            if (category === 'Events') {
+                factEl.innerHTML = `In <strong>${entry.year}</strong>: ${entry.text}`;
+            } else {
+                // Births / Deaths entries are typically "Name, description"
+                factEl.innerHTML = `<strong>${entry.year}</strong> — ${entry.text}`;
+            }
+
+            tagRow.innerHTML = entry._regions.length
+                ? entry._regions.map(r => `<span class="tag">${r}</span>`).join('')
+                : '';
+        }
+
+        // Restore yesterday's... er, today's earlier filter choices, if any.
+        const saved = loadSavedFilters();
+        if (saved) {
+            document.getElementById('Category').value = saved.category || 'Events';
+            document.getElementById('Century').value = saved.century || 'all';
+            document.getElementById('Region').value = saved.region || 'all';
+        }
+
+        fetch(`https://history.muffinlabs.com/date/${month}/${day}`)
+            .then(r => r.ok ? r.json() : Promise.reject(new Error(`API returned ${r.status}`)))
+            .then(data => {
+                for (const cat of ['Events', 'Births', 'Deaths']) {
+                    const list = (data.data && data.data[cat]) || [];
+                    dataByCategory[cat] = list.map(e => ({
+                        ...e,
+                        _regions: detectRegions(e.text)
+                    }));
+                }
+                document.getElementById('loading').style.display = 'none';
+                displayFact();
+            })
+            .catch((err) => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('fact').innerHTML = `<strong>Unable to load facts at the moment.</strong><br><small>${err && err.message ? err.message : ''}</small>`;
+            });
+
+        document.getElementById('Category').addEventListener('change', () => { saveFilters(); displayFact(); });
+        document.getElementById('Century').addEventListener('change', () => { saveFilters(); displayFact(); });
+        document.getElementById('Region').addEventListener('change', () => { saveFilters(); displayFact(); });
+        document.getElementById('next-btn').addEventListener('click', displayFact);
+    </script>
+</body>
+</html>
