@@ -141,6 +141,201 @@
             border-top: 1px solid rgba(139, 69, 19, 0.15);
             padding-top: 1rem;
         }
+
+        /* --- Daily Games dropdown ---------------------------------------- */
+        #games-menu {
+            position: relative;
+            text-align: center;
+            margin: -0.8rem 0 1.6rem;
+        }
+        #games-toggle {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            padding: 9px 20px;
+            border: 1px solid #8b4513;
+            border-radius: 999px;
+            background: #fffef0;
+            color: #8b4513;
+            cursor: pointer;
+        }
+        #games-toggle:hover, #games-toggle[aria-expanded="true"] {
+            background: #8b4513;
+            color: #fffef0;
+        }
+        #games-list {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(340px, 100%);
+            background: #fffef0;
+            border: 1px solid rgba(139, 69, 19, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(60, 47, 47, 0.2);
+            z-index: 10;
+            overflow: hidden;
+            text-align: left;
+        }
+        #games-list button {
+            display: block;
+            width: 100%;
+            padding: 12px 16px;
+            border: none;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.12);
+            background: none;
+            font-family: 'EB Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #3c2f2f;
+            text-align: left;
+            cursor: pointer;
+        }
+        #games-list button:last-child { border-bottom: none; }
+        #games-list button:hover { background: rgba(139, 69, 19, 0.08); }
+        #games-list button small {
+            display: block;
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: #6b5e4e;
+        }
+        .done-mark { color: #4a7c3a; font-weight: 400; font-size: 0.95rem; }
+
+        /* --- Game view ---------------------------------------------------- */
+        #back-btn {
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
+            background: none;
+            border: none;
+            color: #8b4513;
+            cursor: pointer;
+            padding: 0;
+            margin-bottom: 0.5rem;
+        }
+        #game-title {
+            font-family: 'Cinzel', serif;
+            color: #8b4513;
+            text-align: center;
+            font-size: 1.7rem;
+            margin: 0 0 0.3rem;
+        }
+        .game-sub {
+            text-align: center;
+            color: #6b5e4e;
+            font-style: italic;
+            margin: 0 0 1.2rem;
+        }
+        .round-label {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #8a7a63;
+            margin-bottom: 0.8rem;
+        }
+        .clue-list { list-style: none; padding: 0; margin: 0 0 1rem; }
+        .clue-list li {
+            font-size: 1.25rem;
+            line-height: 1.5;
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            background: rgba(139, 69, 19, 0.06);
+            border-left: 3px solid #8b4513;
+            border-radius: 4px;
+        }
+        .quote-text {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            font-style: italic;
+            text-align: center;
+            margin: 0.5rem 0 1.4rem;
+            color: #2f1f0f;
+        }
+        .choices { display: grid; gap: 10px; margin-bottom: 1rem; }
+        .choice, .game-btn {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.15rem;
+            padding: 10px 14px;
+            border: 1px solid #8b4513;
+            border-radius: 6px;
+            background: #fffef0;
+            color: #3c2f2f;
+            cursor: pointer;
+        }
+        .choice:hover:not(:disabled) { background: rgba(139, 69, 19, 0.08); }
+        .choice.correct { background: #4a7c3a; border-color: #4a7c3a; color: #fff; }
+        .choice.wrong { background: #a33b2b; border-color: #a33b2b; color: #fff; }
+        .choice:disabled { cursor: default; }
+        .game-btn.primary { background: #8b4513; color: #fffef0; }
+        .game-btn.primary:hover { background: #6b3410; }
+        .game-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .feedback {
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 0.5rem 0 1rem;
+            min-height: 1.5rem;
+        }
+        .feedback a { color: #0066cc; }
+        .final-score {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: #8b4513;
+            margin: 1rem 0 0.3rem;
+        }
+
+        /* --- History Word grid & keyboard --------------------------------- */
+        .word-hint {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            min-height: 1.5rem;
+        }
+        .word-grid {
+            display: grid;
+            grid-template-rows: repeat(6, 1fr);
+            gap: 6px;
+            width: min(290px, 100%);
+            margin: 0 auto 1rem;
+        }
+        .word-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+        .word-cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            border: 2px solid rgba(139, 69, 19, 0.25);
+            border-radius: 4px;
+            background: #fffef0;
+            text-transform: uppercase;
+        }
+        .word-cell.filled { border-color: #8b4513; }
+        .hit { background: #4a7c3a !important; border-color: #4a7c3a !important; color: #fff; }
+        .near { background: #c9a227 !important; border-color: #c9a227 !important; color: #fff; }
+        .miss { background: #8a7a63 !important; border-color: #8a7a63 !important; color: #fff; }
+        .keyboard { display: grid; gap: 6px; margin-bottom: 1rem; }
+        .kb-row { display: flex; gap: 4px; justify-content: center; }
+        .kb-row button {
+            flex: 1;
+            min-width: 0;
+            max-width: 42px;
+            height: 50px;
+            padding: 0;
+            font-family: 'EB Garamond', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 4px;
+            background: rgba(139, 69, 19, 0.15);
+            color: #3c2f2f;
+            cursor: pointer;
+        }
+        .kb-row button.wide { max-width: 66px; flex: 1.5; font-size: 0.85rem; }
+
+        @media (max-width: 520px) {
+            #fact-container { padding: 32px 18px; }
+            h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -148,6 +343,22 @@
         <h1>On This Day in History</h1>
         <div id="date-header"></div>
 
+        <div id="games-menu">
+            <button id="games-toggle" aria-haspopup="true" aria-expanded="false">Daily Games ▾</button>
+            <div id="games-list" hidden>
+                <button data-game="who">Who Am I? <span class="done-mark" data-done="who"></span><small>Guess the mystery people born today</small></button>
+                <button data-game="quote">Who Said It? <span class="done-mark" data-done="quote"></span><small>Match famous quotes to their speakers</small></button>
+                <button data-game="word">History Word <span class="done-mark" data-done="word"></span><small>Find the hidden 5-letter word in 6 tries</small></button>
+            </div>
+        </div>
+
+        <div id="game-view" hidden>
+            <button id="back-btn">← Back to today's facts</button>
+            <h2 id="game-title"></h2>
+            <div id="game-body"></div>
+        </div>
+
+        <div id="fact-view">
         <div id="tag-row"></div>
         <p id="fact"></p>
         <div id="result-count"></div>
@@ -196,6 +407,7 @@
         </div>
 
         <div id="loading">Loading today's history...</div>
+        </div>
 
         <footer>
             <p>Tap your Epoch bracelet again for a new fact!<br>
@@ -222,7 +434,8 @@
         const month = now.getMonth() + 1;
         const day = now.getDate();
         const monthName = now.toLocaleString('default', { month: 'long' });
-        const todayKey = now.toISOString().slice(0, 10); // e.g. "2026-08-03"
+        // Local date (not UTC), so "today" rolls over at the user's midnight.
+        const todayKey = `${now.getFullYear()}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`; // e.g. "2026-08-03"
 
         document.getElementById('date-header').textContent = `On this day, ${monthName} ${day}...`;
 
@@ -381,6 +594,524 @@
         document.getElementById('Century').addEventListener('change', () => { saveFilters(); displayFact(); });
         document.getElementById('Region').addEventListener('change', () => { saveFilters(); displayFact(); });
         document.getElementById('next-btn').addEventListener('click', displayFact);
+
+        // =================================================================
+        // DAILY GAMES
+        // Every game is seeded from today's date, so everyone who plays on
+        // the same day gets the same puzzles, and they change at midnight.
+        // =================================================================
+
+        // --- Seeded randomness ---------------------------------------------
+        function hashString(str) {
+            let h = 1779033703 ^ str.length;
+            for (let i = 0; i < str.length; i++) {
+                h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+                h = (h << 13) | (h >>> 19);
+            }
+            return h >>> 0;
+        }
+
+        function seededRandom(seed) {
+            let a = hashString(seed);
+            return function () {
+                a = (a + 0x6D2B79F5) | 0;
+                let t = Math.imul(a ^ (a >>> 15), 1 | a);
+                t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+                return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+            };
+        }
+
+        function shuffled(arr, rand) {
+            const a = arr.slice();
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(rand() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        function escapeHtml(s) {
+            return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        // --- Game progress persistence --------------------------------------
+        // Same idea as the filters: one key, tagged with today's date, so
+        // yesterday's results are ignored and storage never grows.
+        const GAMES_KEY = 'epochGames';
+
+        function loadGameState() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(GAMES_KEY));
+                if (saved && saved.date === todayKey) return saved;
+            } catch (err) { /* storage unavailable — start fresh */ }
+            return { date: todayKey };
+        }
+
+        let gameState = loadGameState();
+
+        function saveGameState() {
+            try {
+                localStorage.setItem(GAMES_KEY, JSON.stringify(gameState));
+            } catch (err) { /* fail silently, same as filters */ }
+            updateDoneMarks();
+        }
+
+        function updateDoneMarks() {
+            document.querySelectorAll('[data-done]').forEach(el => {
+                const g = gameState[el.dataset.done];
+                el.textContent = g && g.done ? '✓ played' : '';
+            });
+        }
+
+        // --- Menu & view switching ------------------------------------------
+        const gamesToggle = document.getElementById('games-toggle');
+        const gamesList = document.getElementById('games-list');
+        const factView = document.getElementById('fact-view');
+        const gameView = document.getElementById('game-view');
+        const gameTitle = document.getElementById('game-title');
+        const gameBody = document.getElementById('game-body');
+
+        function setMenuOpen(open) {
+            gamesList.hidden = !open;
+            gamesToggle.setAttribute('aria-expanded', String(open));
+        }
+
+        gamesToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setMenuOpen(gamesList.hidden);
+        });
+        document.addEventListener('click', (e) => {
+            if (!document.getElementById('games-menu').contains(e.target)) setMenuOpen(false);
+        });
+
+        let activeGame = null;
+
+        const GAMES = {
+            who: { title: 'Who Am I?', start: startWhoAmI },
+            quote: { title: 'Who Said It?', start: startQuoteGame },
+            word: { title: 'History Word', start: startWordGame }
+        };
+
+        function openGame(key) {
+            setMenuOpen(false);
+            activeGame = key;
+            factView.hidden = true;
+            gameView.hidden = false;
+            gameTitle.textContent = GAMES[key].title;
+            GAMES[key].start();
+        }
+
+        function closeGame() {
+            activeGame = null;
+            gameView.hidden = true;
+            factView.hidden = false;
+            gameBody.innerHTML = '';
+        }
+
+        gamesList.querySelectorAll('button[data-game]').forEach(btn =>
+            btn.addEventListener('click', () => openGame(btn.dataset.game)));
+        document.getElementById('back-btn').addEventListener('click', closeGame);
+
+        function renderFinished(sub, scoreText, extraHtml, replay) {
+            gameBody.innerHTML = `
+                <p class="game-sub">${sub}</p>
+                <div class="final-score">${scoreText}</div>
+                ${extraHtml || ''}
+                <p class="game-sub">Come back tomorrow for a new puzzle!</p>
+                <div class="game-actions">
+                    <button class="game-btn" id="replay-btn">Play again for fun</button>
+                    <button class="game-btn primary" id="facts-btn">Back to facts</button>
+                </div>`;
+            document.getElementById('replay-btn').addEventListener('click', replay);
+            document.getElementById('facts-btn').addEventListener('click', closeGame);
+        }
+
+        // Generic multiple-choice handler: locks the buttons, colours the
+        // right/wrong answers, and reports whether the pick was correct.
+        function wireChoices(container, correct, onAnswer) {
+            const buttons = container.querySelectorAll('.choice');
+            buttons.forEach(btn => btn.addEventListener('click', () => {
+                buttons.forEach(b => {
+                    b.disabled = true;
+                    if (b.dataset.value === correct) b.classList.add('correct');
+                });
+                const right = btn.dataset.value === correct;
+                if (!right) btn.classList.add('wrong');
+                onAnswer(right);
+            }));
+        }
+
+        function choicesHtml(options) {
+            return `<div class="choices">${options.map(o =>
+                `<button class="choice" data-value="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div>`;
+        }
+
+        // =================================================================
+        // GAME 1: WHO AM I? — people born on today's date
+        // =================================================================
+        const WHO_ROUNDS = 3;
+
+        // Births look like "Name, description (died 1507)".
+        function parsePerson(entry) {
+            const text = entry.text || '';
+            const name = text.split(/,|\(/)[0].trim();
+            let rest = text.slice(name.length).replace(/^,\s*/, '');
+            const diedMatch = rest.match(/\((?:died|d\.)\s*(?:around\s*|c\.\s*)?(\d{1,4})(\s*BC)?\)\s*$/i);
+            const died = diedMatch && !diedMatch[2] ? parseInt(diedMatch[1], 10) : null;
+            const desc = rest.replace(/\s*\([^)]*\)\s*$/, '').trim();
+            const born = /^\d{1,4}$/.test(String(entry.year).trim()) ? parseInt(entry.year, 10) : null;
+            const link = entry.links && entry.links[0] ? entry.links[0].link : null;
+            return { name, desc, born, died, link };
+        }
+
+        // Hide any part of the name that appears inside a clue.
+        function maskName(text, name) {
+            let out = text;
+            for (const part of name.split(/\s+/)) {
+                if (part.length < 3) continue;
+                const re = new RegExp(`\\b${part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+                out = out.replace(re, '_____');
+            }
+            return out;
+        }
+
+        function startWhoAmI(replay) {
+            const births = dataByCategory.Births || [];
+            if (!births.length) {
+                gameBody.innerHTML = `<p class="game-sub">Today's birthdays are still loading — try again in a moment.</p>`;
+                return;
+            }
+            const saved = gameState.who;
+            if (saved && saved.done && !replay) {
+                renderFinished(`You've played today's Who Am I?`, `${saved.score} / ${saved.max}`, '', () => startWhoAmI(true));
+                return;
+            }
+
+            const people = births.map(parsePerson).filter(p => p.name && p.desc && p.born);
+            const rand = seededRandom(todayKey + '-who' + (replay ? Math.random() : ''));
+            const picks = shuffled(people, rand).slice(0, WHO_ROUNDS);
+            let round = 0, score = 0;
+
+            function playRound() {
+                const person = picks[round];
+                const others = shuffled(people.filter(p => p.name !== person.name), rand).slice(0, 3).map(p => p.name);
+                const options = shuffled([person.name, ...others], rand);
+                const initials = person.name.split(/\s+/).map(w => w[0].toUpperCase() + '.').join(' ');
+                const clues = [
+                    `${/^[aeiou]/i.test(person.desc) ? 'An' : 'A'} ${maskName(person.desc, person.name)}.`,
+                    `Born in ${person.born}` + (person.died ? `, died in ${person.died} (around age ${person.died - person.born}).` : '.'),
+                    `Initials: ${initials}`
+                ];
+                let shown = 1, answered = false;
+
+                function render() {
+                    gameBody.innerHTML = `
+                        <p class="game-sub">Born on ${monthName} ${day}. Fewer clues = more points.</p>
+                        <div class="round-label">Person ${round + 1} of ${picks.length} · Score: ${score}</div>
+                        <ul class="clue-list">${clues.slice(0, shown).map(c => `<li>${escapeHtml(c)}</li>`).join('')}</ul>
+                        ${choicesHtml(options)}
+                        <div class="feedback" id="feedback"></div>
+                        <div class="game-actions" id="actions">
+                            ${shown < clues.length ? `<button class="game-btn" id="clue-btn">Reveal another clue (−1 pt)</button>` : ''}
+                        </div>`;
+                    const clueBtn = document.getElementById('clue-btn');
+                    if (clueBtn) clueBtn.addEventListener('click', () => { if (!answered) { shown++; render(); } });
+
+                    wireChoices(gameBody, person.name, (right) => {
+                        answered = true;
+                        const pts = right ? clues.length + 1 - shown : 0;
+                        score += pts;
+                        const more = person.link ? ` <a href="${escapeHtml(person.link)}" target="_blank">Learn more</a>` : '';
+                        document.getElementById('feedback').innerHTML = right
+                            ? `Correct! It was <strong>${escapeHtml(person.name)}</strong>. +${pts} point${pts === 1 ? '' : 's'}.${more}`
+                            : `It was <strong>${escapeHtml(person.name)}</strong>.${more}`;
+                        const last = round === picks.length - 1;
+                        document.getElementById('actions').innerHTML =
+                            `<button class="game-btn primary" id="next-round">${last ? 'See my score' : 'Next person →'}</button>`;
+                        document.getElementById('next-round').addEventListener('click', () => {
+                            round++;
+                            if (round < picks.length) return playRound();
+                            const max = picks.length * clues.length;
+                            if (!replay) { gameState.who = { done: true, score, max }; saveGameState(); }
+                            renderFinished('Today\'s mystery people', `${score} / ${max}`, '', () => startWhoAmI(true));
+                        });
+                    });
+                }
+                render();
+            }
+            playRound();
+        }
+
+        // =================================================================
+        // GAME 2: WHO SAID IT? — curated famous quotes
+        // Only quotes with well-established attributions are included
+        // (no "Let them eat cake"-style misattributions).
+        // =================================================================
+        const QUOTES = [
+            { q: "I came, I saw, I conquered.", who: "Julius Caesar", ctx: "Reporting his swift victory at Zela, 47 BC" },
+            { q: "Give me liberty, or give me death!", who: "Patrick Henry", ctx: "Speech to the Virginia Convention, 1775" },
+            { q: "The only thing we have to fear is fear itself.", who: "Franklin D. Roosevelt", ctx: "First inaugural address, 1933" },
+            { q: "A date which will live in infamy.", who: "Franklin D. Roosevelt", ctx: "Speech to Congress after Pearl Harbor, 1941" },
+            { q: "Ask not what your country can do for you — ask what you can do for your country.", who: "John F. Kennedy", ctx: "Inaugural address, 1961" },
+            { q: "We choose to go to the Moon.", who: "John F. Kennedy", ctx: "Speech at Rice University, 1962" },
+            { q: "I have a dream.", who: "Martin Luther King Jr.", ctx: "March on Washington, 1963" },
+            { q: "Injustice anywhere is a threat to justice everywhere.", who: "Martin Luther King Jr.", ctx: "Letter from Birmingham Jail, 1963" },
+            { q: "We shall fight on the beaches.", who: "Winston Churchill", ctx: "Speech to Parliament, 1940" },
+            { q: "An iron curtain has descended across the Continent.", who: "Winston Churchill", ctx: "Speech in Fulton, Missouri, 1946" },
+            { q: "Four score and seven years ago our fathers brought forth on this continent a new nation.", who: "Abraham Lincoln", ctx: "Gettysburg Address, 1863" },
+            { q: "A house divided against itself cannot stand.", who: "Abraham Lincoln", ctx: "Speech in Springfield, Illinois, 1858" },
+            { q: "That's one small step for man, one giant leap for mankind.", who: "Neil Armstrong", ctx: "Stepping onto the Moon, 1969" },
+            { q: "Mr. Gorbachev, tear down this wall!", who: "Ronald Reagan", ctx: "Speech at the Brandenburg Gate, Berlin, 1987" },
+            { q: "I think, therefore I am.", who: "René Descartes", ctx: "Discourse on the Method, 1637" },
+            { q: "Speak softly and carry a big stick.", who: "Theodore Roosevelt", ctx: "Describing his approach to foreign policy, 1901" },
+            { q: "Remember the ladies.", who: "Abigail Adams", ctx: "Letter to her husband John Adams, 1776" },
+            { q: "If I have seen further, it is by standing on the shoulders of giants.", who: "Isaac Newton", ctx: "Letter to Robert Hooke, 1675" },
+            { q: "We hold these truths to be self-evident, that all men are created equal.", who: "Thomas Jefferson", ctx: "Declaration of Independence, 1776" },
+            { q: "Workers of the world, unite!", who: "Karl Marx", ctx: "The Communist Manifesto (with Friedrich Engels), 1848" },
+            { q: "Mr. Watson, come here, I want to see you.", who: "Alexander Graham Bell", ctx: "The first telephone call, 1876" },
+            { q: "What hath God wrought.", who: "Samuel Morse", ctx: "First long-distance telegraph message, 1844" },
+            { q: "Dr. Livingstone, I presume?", who: "Henry Morton Stanley", ctx: "Finding the missing explorer in Africa, 1871" },
+            { q: "I shall return.", who: "Douglas MacArthur", ctx: "After leaving the Philippines, 1942" },
+            { q: "I only regret that I have but one life to lose for my country.", who: "Nathan Hale", ctx: "Before his execution as a spy, 1776" },
+            { q: "I have not yet begun to fight!", who: "John Paul Jones", ctx: "Naval battle off the coast of England, 1779" },
+            { q: "Peace for our time.", who: "Neville Chamberlain", ctx: "Returning from the Munich Agreement, 1938" },
+            { q: "I know I have the body of a weak and feeble woman; but I have the heart and stomach of a king.", who: "Elizabeth I", ctx: "Speech to troops at Tilbury before the Spanish Armada, 1588" },
+            { q: "These are the times that try men's souls.", who: "Thomas Paine", ctx: "The American Crisis, 1776" },
+            { q: "Those who cannot remember the past are condemned to repeat it.", who: "George Santayana", ctx: "The Life of Reason, 1905" },
+            { q: "The world must be made safe for democracy.", who: "Woodrow Wilson", ctx: "Asking Congress to declare war on Germany, 1917" },
+            { q: "If there is no struggle, there is no progress.", who: "Frederick Douglass", ctx: "Speech in Canandaigua, New York, 1857" },
+            { q: "Carthage must be destroyed.", who: "Cato the Elder", ctx: "How he ended his speeches in the Roman Senate, 2nd century BC" },
+            { q: "I found Rome a city of bricks and left it a city of marble.", who: "Augustus", ctx: "As recorded by the Roman historian Suetonius" },
+            { q: "Man is born free, and everywhere he is in chains.", who: "Jean-Jacques Rousseau", ctx: "The Social Contract, 1762" },
+            { q: "It is an ideal for which I am prepared to die.", who: "Nelson Mandela", ctx: "Statement at the Rivonia Trial, 1964" },
+            { q: "The unexamined life is not worth living.", who: "Socrates", ctx: "At his trial, as recorded by Plato, 399 BC" },
+            { q: "Power tends to corrupt, and absolute power corrupts absolutely.", who: "Lord Acton", ctx: "Letter to a bishop, 1887" },
+            { q: "Genius is one percent inspiration, ninety-nine percent perspiration.", who: "Thomas Edison", ctx: "Quoted in interviews in the early 1900s" },
+            { q: "The buck stops here.", who: "Harry S. Truman", ctx: "Sign on his desk in the Oval Office" }
+        ];
+        const QUOTE_ROUNDS = 5;
+
+        function startQuoteGame(replay) {
+            const saved = gameState.quote;
+            if (saved && saved.done && !replay) {
+                renderFinished(`You've played today's Who Said It?`, `${saved.score} / ${saved.max}`, '', () => startQuoteGame(true));
+                return;
+            }
+            const rand = seededRandom(todayKey + '-quote' + (replay ? Math.random() : ''));
+            const speakers = [...new Set(QUOTES.map(x => x.who))];
+            const picks = shuffled(QUOTES, rand).slice(0, QUOTE_ROUNDS);
+            let round = 0, score = 0;
+
+            function playRound() {
+                const item = picks[round];
+                const others = shuffled(speakers.filter(s => s !== item.who), rand).slice(0, 3);
+                const options = shuffled([item.who, ...others], rand);
+                gameBody.innerHTML = `
+                    <p class="game-sub">Who said these famous words?</p>
+                    <div class="round-label">Quote ${round + 1} of ${picks.length} · Score: ${score}</div>
+                    <p class="quote-text">“${escapeHtml(item.q)}”</p>
+                    ${choicesHtml(options)}
+                    <div class="feedback" id="feedback"></div>
+                    <div class="game-actions" id="actions"></div>`;
+                wireChoices(gameBody, item.who, (right) => {
+                    if (right) score++;
+                    document.getElementById('feedback').innerHTML =
+                        `${right ? 'Correct!' : `It was <strong>${escapeHtml(item.who)}</strong>.`}<br><small><em>${escapeHtml(item.ctx)}</em></small>`;
+                    const last = round === picks.length - 1;
+                    document.getElementById('actions').innerHTML =
+                        `<button class="game-btn primary" id="next-round">${last ? 'See my score' : 'Next quote →'}</button>`;
+                    document.getElementById('next-round').addEventListener('click', () => {
+                        round++;
+                        if (round < picks.length) return playRound();
+                        if (!replay) { gameState.quote = { done: true, score, max: picks.length }; saveGameState(); }
+                        renderFinished('Today\'s quotes', `${score} / ${picks.length}`, '', () => startQuoteGame(true));
+                    });
+                });
+            }
+            playRound();
+        }
+
+        // =================================================================
+        // GAME 3: HISTORY WORD — Wordle-style, history vocabulary
+        // =================================================================
+        const WORDS = [
+            ["AZTEC", "Empire whose capital, Tenochtitlan, stood where Mexico City is today"],
+            ["MAYAN", "Describes the civilization that built Tikal and Chichén Itzá"],
+            ["ROMAN", "Describes the empire ruled from the city of seven hills"],
+            ["INCAS", "Andean people who built Machu Picchu"],
+            ["CROWN", "Symbol of royal power placed on a monarch's head at a coronation"],
+            ["SWORD", "Excalibur was a legendary one"],
+            ["REIGN", "The period during which a monarch rules"],
+            ["QUEEN", "Title held by both Victoria and Elizabeth I"],
+            ["SIEGE", "Surrounding a city or castle to force it to surrender"],
+            ["TRUCE", "Temporary pause in fighting, like the famous Christmas one of 1914"],
+            ["REBEL", "Someone who rises up against those in power"],
+            ["UNION", "The Northern side in the American Civil War"],
+            ["NOBLE", "A member of the aristocracy"],
+            ["BARON", "Rank of nobles who forced King John to seal the Magna Carta"],
+            ["FLEET", "The Spanish Armada was one"],
+            ["RELIC", "An object surviving from an earlier time"],
+            ["MUMMY", "A carefully preserved body from ancient Egypt"],
+            ["NORSE", "Describes the Vikings, their language and their gods"],
+            ["CELTS", "Ancient peoples of Ireland, Scotland, Wales and Gaul"],
+            ["SAXON", "Germanic people who settled England alongside the Angles"],
+            ["TUDOR", "Royal house of Henry VIII and Elizabeth I"],
+            ["FORUM", "Public square at the heart of ancient Rome"],
+            ["ARENA", "Where gladiators fought"],
+            ["SPEAR", "Long thrusting weapon carried by Greek hoplites"],
+            ["ABBEY", "Westminster ___, where English monarchs are crowned"],
+            ["MONKS", "They copied manuscripts by hand in medieval monasteries"],
+            ["GUILD", "Medieval association of craftsmen or merchants"],
+            ["SERFS", "Peasants bound to a lord's land under feudalism"],
+            ["HORDE", "The Golden ___, a Mongol khanate"],
+            ["STEAM", "Power source that drove the Industrial Revolution"],
+            ["TRADE", "The Silk Road existed for this"],
+            ["SPICE", "Pepper and cinnamon sent European explorers sailing for this"],
+            ["EDICT", "An official order, like the ___ of Milan in 313 AD"],
+            ["RUNES", "Letters of the old Germanic and Viking alphabets"],
+            ["GLYPH", "A carved symbol, like those in Egyptian or Maya writing"],
+            ["EPOCH", "A distinct period in history (and the name of this site!)"],
+            ["DRAFT", "Compulsory enlistment into the military"],
+            ["MARCH", "The 1963 ___ on Washington"],
+            ["LANCE", "A knight's long weapon for jousting"],
+            ["FRIAR", "___ Tuck, of the Robin Hood legends"],
+            ["TSARS", "Rulers of Russia until 1917"]
+        ].filter(([w]) => w.length === 5);
+        const MAX_GUESSES = 6;
+
+        function todaysWord() {
+            // Deterministic daily order: shuffle once with a fixed seed, then
+            // walk through it one day at a time.
+            const order = shuffled(WORDS, seededRandom('epoch-words'));
+            const dayNumber = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000);
+            return order[dayNumber % order.length];
+        }
+
+        // Wordle scoring, with correct handling of repeated letters.
+        function scoreGuess(guess, answer) {
+            const result = Array(5).fill('miss');
+            const remaining = {};
+            for (let i = 0; i < 5; i++) {
+                if (guess[i] === answer[i]) result[i] = 'hit';
+                else remaining[answer[i]] = (remaining[answer[i]] || 0) + 1;
+            }
+            for (let i = 0; i < 5; i++) {
+                if (result[i] !== 'hit' && remaining[guess[i]]) {
+                    result[i] = 'near';
+                    remaining[guess[i]]--;
+                }
+            }
+            return result;
+        }
+
+        let wordKeyHandler = null;
+
+        function startWordGame(replay) {
+            let [answer, clue] = todaysWord();
+            if (replay) [answer, clue] = WORDS[Math.floor(Math.random() * WORDS.length)];
+            const st = replay ? { guesses: [] } : (gameState.word || (gameState.word = { guesses: [] }));
+            let current = '';
+            let hintShown = !!st.hint;
+            let message = '';
+
+            const isOver = () => st.guesses.includes(answer) || st.guesses.length >= MAX_GUESSES;
+
+            function finish() {
+                const won = st.guesses.includes(answer);
+                if (!replay) { st.done = true; gameState.word = st; saveGameState(); }
+                const grid = st.guesses.map(g => scoreGuess(g, answer)
+                    .map(r => r === 'hit' ? '🟩' : r === 'near' ? '🟨' : '⬜').join('')).join('<br>');
+                renderFinished(
+                    won ? 'You found it!' : 'Better luck tomorrow',
+                    answer,
+                    `<p class="game-sub">${escapeHtml(clue)}</p>
+                     <p style="text-align:center;line-height:1.3">${grid}</p>
+                     <p class="round-label">${won ? `Solved in ${st.guesses.length} / ${MAX_GUESSES}` : `X / ${MAX_GUESSES}`}</p>`,
+                    () => startWordGame(true));
+            }
+
+            if (isOver()) return finish();
+
+            function letterStates() {
+                const rank = { miss: 1, near: 2, hit: 3 };
+                const states = {};
+                for (const g of st.guesses) {
+                    scoreGuess(g, answer).forEach((r, i) => {
+                        if (!states[g[i]] || rank[r] > rank[states[g[i]]]) states[g[i]] = r;
+                    });
+                }
+                return states;
+            }
+
+            function render() {
+                const rows = [];
+                for (let r = 0; r < MAX_GUESSES; r++) {
+                    const guess = st.guesses[r];
+                    const letters = guess || (r === st.guesses.length ? current : '');
+                    const scores = guess ? scoreGuess(guess, answer) : [];
+                    rows.push(`<div class="word-row">${[0, 1, 2, 3, 4].map(i =>
+                        `<div class="word-cell ${scores[i] || (letters[i] ? 'filled' : '')}">${letters[i] || ''}</div>`).join('')}</div>`);
+                }
+                const states = letterStates();
+                const kb = ['QWERTYUIOP', 'ASDFGHJKL', '+ZXCVBNM-'].map(row =>
+                    `<div class="kb-row">${[...row].map(k => {
+                        if (k === '+') return `<button class="wide" data-key="Enter">ENTER</button>`;
+                        if (k === '-') return `<button class="wide" data-key="Backspace" aria-label="Delete">⌫</button>`;
+                        return `<button data-key="${k}" class="${states[k] || ''}">${k}</button>`;
+                    }).join('')}</div>`).join('');
+
+                gameBody.innerHTML = `
+                    <p class="game-sub">Guess the 5-letter history word in ${MAX_GUESSES} tries.<br>
+                    <small>🟩 right spot · 🟨 in the word, wrong spot · ⬜ not in the word</small></p>
+                    <div class="word-hint">${hintShown
+                        ? `💡 <em>${escapeHtml(clue)}</em>`
+                        : `<button class="game-btn" id="hint-btn">💡 Show hint</button>`}</div>
+                    <div class="word-grid">${rows.join('')}</div>
+                    <div class="feedback">${escapeHtml(message)}</div>
+                    <div class="keyboard">${kb}</div>`;
+                const hintBtn = document.getElementById('hint-btn');
+                if (hintBtn) hintBtn.addEventListener('click', () => { hintShown = st.hint = true; persist(); render(); });
+                gameBody.querySelectorAll('[data-key]').forEach(b =>
+                    b.addEventListener('click', () => press(b.dataset.key)));
+            }
+
+            function persist() {
+                if (!replay) { gameState.word = st; saveGameState(); }
+            }
+
+            function press(key) {
+                if (isOver()) return;
+                message = '';
+                if (key === 'Enter') {
+                    if (current.length < 5) { message = 'Not enough letters'; return render(); }
+                    st.guesses.push(current);
+                    current = '';
+                    // Give a nudge after three misses if they haven't asked for the hint.
+                    if (!hintShown && st.guesses.length >= 3 && !st.guesses.includes(answer)) {
+                        hintShown = st.hint = true;
+                    }
+                    persist();
+                    if (isOver()) return finish();
+                } else if (key === 'Backspace') {
+                    current = current.slice(0, -1);
+                } else if (/^[A-Z]$/.test(key) && current.length < 5) {
+                    current += key;
+                }
+                render();
+            }
+
+            if (wordKeyHandler) document.removeEventListener('keydown', wordKeyHandler);
+            wordKeyHandler = (e) => {
+                if (activeGame !== 'word' || e.metaKey || e.ctrlKey || e.altKey) return;
+                if (e.key === 'Enter' || e.key === 'Backspace') { e.preventDefault(); press(e.key); }
+                else if (/^[a-z]$/i.test(e.key)) press(e.key.toUpperCase());
+            };
+            document.addEventListener('keydown', wordKeyHandler);
+
+            render();
+        }
+
+        updateDoneMarks();
     </script>
 </body>
 </html>
