@@ -146,7 +146,13 @@
         #games-menu {
             position: relative;
             text-align: center;
-            margin: -0.8rem 0 1.6rem;
+            margin: 0 0 0.6rem;
+        }
+        #version {
+            margin-top: 0.8rem;
+            font-size: 0.8rem;
+            color: #8a7a63;
+            letter-spacing: 0.05em;
         }
         #games-toggle {
             font-family: 'Cinzel', serif;
@@ -343,15 +349,6 @@
         <h1>On This Day in History</h1>
         <div id="date-header"></div>
 
-        <div id="games-menu">
-            <button id="games-toggle" aria-haspopup="true" aria-expanded="false">Daily Games ▾</button>
-            <div id="games-list" hidden>
-                <button data-game="who">Who Am I? <span class="done-mark" data-done="who"></span><small>Guess the mystery people born today</small></button>
-                <button data-game="quote">Who Said It? <span class="done-mark" data-done="quote"></span><small>Match famous quotes to their speakers</small></button>
-                <button data-game="word">History Word <span class="done-mark" data-done="word"></span><small>Find the hidden 5-letter word in 6 tries</small></button>
-            </div>
-        </div>
-
         <div id="game-view" hidden>
             <button id="back-btn">← Back to today's facts</button>
             <h2 id="game-title"></h2>
@@ -401,13 +398,22 @@
 
             <button id="next-btn">Next Fact</button>
         </div>
+        </div>
+
+        <div id="games-menu">
+            <button id="games-toggle" aria-haspopup="true" aria-expanded="false">Daily Games ▾</button>
+            <div id="games-list" hidden>
+                <button data-game="who">Who Am I? <span class="done-mark" data-done="who"></span><small>Guess the mystery people born today</small></button>
+                <button data-game="quote">Who Said It? <span class="done-mark" data-done="quote"></span><small>Match famous quotes to their speakers</small></button>
+                <button data-game="word">History Word <span class="done-mark" data-done="word"></span><small>Find the hidden 5-letter word in 6 tries</small></button>
+            </div>
+        </div>
 
         <div id="epoch-link">
             <a href="https://www.epoch-us.com" target="_blank">Epoch</a>
         </div>
 
         <div id="loading">Loading today's history...</div>
-        </div>
 
         <footer>
             <p>Tap your Epoch bracelet again for a new fact!<br>
@@ -417,6 +423,7 @@
                 Region tagging is inferred from place names mentioned in each entry and may occasionally be imprecise or unavailable.
                 © 2026 Epoch. All original content reserved.
             </small>
+            <div id="version">V. 1.0.8</div>
         </footer>
     </div>
 
